@@ -1,5 +1,5 @@
-use std::{env, process};
 use mini_grep::Config;
+use std::{env, process};
 fn main() {
     let args = env::args().collect::<Vec<_>>();
 
@@ -7,10 +7,7 @@ fn main() {
         println!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.file_path);
-
-    if let Err(e) =mini_grep::run(config) {
+    if let Err(e) = mini_grep::run(config) {
         println!("Application error: {e}");
         process::exit(1);
     }
